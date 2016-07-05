@@ -4,4 +4,4 @@ Django==1.9.7
 django-bootstrap3==7.0.1
 gunicorn==19.6.0
 static3==0.7.0
-psycopg>=2.6.1
+psycopg2>=2.6.1

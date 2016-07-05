@@ -1,0 +1,1 @@
+Temp file to ensure the static directory gets loaded properly.

@@ -1,0 +1,29 @@
+{% extends 'next_train/base.html'  %}
+
+<!-- Next Train  -->
+
+
+{% block header %}
+    <h1>DC Next Train</h1><small><a href="http://www.wmata.com/rail/maps/map.cfm" target="_blank">map</a></small>
+{% endblock header %}
+
+{% block content  %}
+<form action="{% url 'next_train:index' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+<ul>
+    {% for train in nextTrain %}
+    <li>
+        <h3>
+        {{ train }}
+        </h3>
+    </li>
+    {% empty %}
+        ( Please select a station or multiple stations above. )
+    {% endfor %}
+</ul>
+
+
+{% endblock content  %}

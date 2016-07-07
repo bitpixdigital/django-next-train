@@ -3,7 +3,10 @@
 {% block content %}
 
 <h2>Station Preferences</h2>
-
+<p>
+    <b></b>Select (or deselect) your favorite lines below</b> to have them automatically
+    selected when logging in.
+</p>
 <form action="{% url 'next_train:preferences' %}" method='post'>
     {% csrf_token %}
     {{ form.as_p }}

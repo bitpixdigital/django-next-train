@@ -26,13 +26,16 @@
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">
-                <!-- We will activate user login and preferences soon -->
-                <!-- <ul class="nav navbar-nav">
-                    <li><a href="{% url 'next_train:index' %}">Topics</a></li>
-                </ul> -->
 
                 <ul class="nav navbar-nav navbar-right">
-
+                    {% if user.is_authenticated %}
+                      <li><a href="accounts/password_change">Hello {{ user.username }}</a></li>
+                      <li><a href="{% url 'next_train:preferences' %}">preferences</a></li>
+                      <li><a href="{% url 'users:logout' %}">logout</a></li>
+                    {% else %}
+                      <li></li>
+                      <li></li>
+                    {% endif %}
                 </ul>
 
             </div><!--/.nav-collapse -->

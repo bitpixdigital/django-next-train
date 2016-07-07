@@ -27,10 +27,22 @@ def index(request):
         # No data submitted; create blank form
         s_pref_2 = checkPrefs(request)
         form = NextTrainForm(initial={'station_choice': s_pref_2})
-        context = {'form': form}
+
+        message = """Next Train DC is designed to be a lightweight, and thus
+                  the fastest, tool to help you catch the next arriving train.
+                  Simply choose one or more of the stations below. If you
+                  need to transfer to another line on your trip, make sure
+                  you select the transfer station as well
+                  to optimize your timing! Registration is optional,
+                  but it's designed to save you time by allowing you to save
+                  your favorite stations so that they're pre-selected the
+                  next time you log in."""
+
+        context = {'form': form, 'message': message}
         return render(request, 'next_train/index.html', context)
     else:
         nextTrain = []
+        message = ""
         # POST data submitted; process data.
         form = NextTrainForm(request.POST)
         if form.is_valid():
@@ -76,7 +88,7 @@ def index(request):
 
                 #print(data)
                 conn.close()
-                context = {'nextTrain': nextTrain, 'form': form}
+                context = {'nextTrain': nextTrain, 'form': form, 'message': message}
                 return render(request, 'next_train/index.html', context)
             except Exception as e:
                 print("[Errno {0}] {1}".format(e.errno, e.strerror))

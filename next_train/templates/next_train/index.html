@@ -8,20 +8,7 @@
 {% endblock header %}
 
 {% block content  %}
-<p>
-    Next Train DC is designed to be a lightweight, and thus the fastest, tool
-    to help you catch the next arriving train.
-</p>
-<p>
-    Simply choose one or more of the stations below. If you need to transfer to
-    another line on your trip, <b>make sure you select the transfer station as well</b>
-    to optimize your timing!
-</p>
-<p>
-    Registration is optional, but it's designed to save you time
-    by allowing you to save your favorite stations
-    so that they're pre-selected the next time you log in.
-</p>
+ <small> {{ message }} </small>
 <form action="{% url 'next_train:index' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}

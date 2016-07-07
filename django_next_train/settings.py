@@ -35,6 +35,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+SITE_NAME = 'Next Train'
+EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
 # Secure settings within included local_settings
 
 # Application definition

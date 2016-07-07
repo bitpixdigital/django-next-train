@@ -150,7 +150,7 @@ if os.getcwd() == '/app':
 
     # Allow all host headers.
     ALLOWED_HOSTS = ['young-lake-29812.herokuapp.com', 'www.nexttrain.us']
-    DEBUG = True
+    DEBUG = False
     # Static asset configuration
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = 'staticfiles'

@@ -13,6 +13,12 @@ or within any Django project.
 Another great feature of Next Train is the ability to select and display information for multiple stations in one click, which makes it 
 easier and faster to calculate the timing of a connecting train.
 
+## Example ##
+
+To see a live version of Next Train, see the link below:
+
+http://nexttrain.bitpixdigital.net/
+
 ## Roadmap ##
 
 This is the very first release, but I hope to add the following features soon. 

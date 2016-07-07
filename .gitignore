@@ -3,3 +3,4 @@ ll_env/
 __pycache__/
 *.sqlite3
 *.DS_Store
+local_settings.py

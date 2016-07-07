@@ -33,8 +33,8 @@
                       <li><a href="{% url 'next_train:preferences' %}">preferences</a></li>
                       <li><a href="{% url 'users:logout' %}">logout</a></li>
                     {% else %}
-                      <li></li>
-                      <li></li>
+                      <li><a href="{% url 'users:register' %}">register</a></li>
+                      <li><a href="{% url 'users:login' %}">login</a></li>
                     {% endif %}
                 </ul>
 

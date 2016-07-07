@@ -23,11 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # set your key as an environmental variable.
 # Before deploying to Heroku us the command
 # "heroku config:set DJANGO_SECRET_KEY"
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = 'mc*vr^**zb&4vh^*tod7*@44au!@)*ib&l^okxtwj_5u=5n85#'
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'young-lake-29812.herokuapp.com', 'nexttrain.bitpixdigital.net']
 
@@ -35,6 +36,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'young-lake-29812.herokuapp.com', 'ne
 # Application definition
 
 INSTALLED_APPS = [
+    'next_train',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
-    'next_train',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -150,3 +152,7 @@ if os.getcwd() == '/app':
     STATICFILES_DIR = (
         os.path.join(BASE_DIR, 'static')
     )
+
+# My settings
+
+LOGIN_URL = '/users/login/'

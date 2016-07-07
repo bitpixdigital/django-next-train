@@ -1,6 +1,10 @@
 from django import forms
+from django.contrib.auth.models import User
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
 
 # from .models import Topic, Entry
+from .models import StationPrefs
 
 METRO_STATIONS = (
 ('F06', 'Anacostia'),
@@ -93,5 +97,29 @@ METRO_STATIONS = (
  ('A04', 'Woodley Park-Zoo/Adams Morgan')
 )
 
+class UserCreateForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password2")
+
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False)
+        user.email = self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user
+
 class NextTrainForm(forms.Form):
     station_choice = forms.MultipleChoiceField(widget=forms.SelectMultiple(attrs={'size':'10'}), choices=METRO_STATIONS)
+
+class StationPrefForm(forms.Form):
+    station_choice = forms.MultipleChoiceField(widget=forms.SelectMultiple(attrs={'size':'10'}), choices=METRO_STATIONS)
+    def save(self, defOwner):
+        clear = StationPrefs.objects.filter(owner=defOwner)
+        clear.delete()
+        s_choice = self.cleaned_data['station_choice']
+        for choice in s_choice:
+            stationData = StationPrefs(owner=defOwner, station=choice)
+            stationData.save()

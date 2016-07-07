@@ -6,16 +6,27 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64, json, da
 
 
 # from .models import NextTrain
-from .forms import NextTrainForm
+from .models import StationPrefs
 
+# import forms
+from .forms import NextTrainForm, StationPrefForm, ModelForm
 
+def checkPrefs(request):
+    if request.user.is_authenticated():
+        s_pref = StationPrefs.objects.filter(owner=request.user)
+    else:
+        s_pref = ""
+    return s_pref
 
 # Create your views here.
 def index(request):
     """Display next train info for DC Metro system"""
+    # Check for user station preferences
+
     if request.method != 'POST':
         # No data submitted; create blank form
-        form = NextTrainForm()
+        s_pref_2 = checkPrefs(request)
+        form = NextTrainForm(initial={'station_choice': s_pref_2})
         context = {'form': form}
         return render(request, 'next_train/index.html', context)
     else:
@@ -69,3 +80,23 @@ def index(request):
                 return render(request, 'next_train/index.html', context)
             except Exception as e:
                 print("[Errno {0}] {1}".format(e.errno, e.strerror))
+
+@login_required
+def preferences(request):
+    """Edit an existing entry"""
+    s_pref_2 = checkPrefs(request)
+    if request.method != 'POST':
+        # Initial request; pre-fill form with current entry
+        form = StationPrefForm(initial={'station_choice': s_pref_2})
+    else:
+        # POST data submitted; process data.
+        form = StationPrefForm(request.POST)
+        if form.is_valid():
+            # s_choice = form.cleaned_data['station_choice']
+            form.save(defOwner=request.user)
+            # s_pref = form.save(commit=False)
+            # s_pref.owner = request.user
+            # s_pref.save()
+            return HttpResponseRedirect(reverse('next_train:index'))
+    context = {'form': form}
+    return render(request, 'next_train/preferences.html', context)

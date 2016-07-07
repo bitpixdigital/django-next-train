@@ -7,5 +7,6 @@ from . import views
 urlpatterns = [
     # Home page
     url(r'^$', views.index, name='index'),
+    url(r'^preferences/$', views.preferences, name='preferences'),
 
 ]

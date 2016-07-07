@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from next_train.models import StationPrefs
+
+admin.site.register(StationPrefs)

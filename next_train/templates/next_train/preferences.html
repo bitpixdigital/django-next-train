@@ -1,0 +1,13 @@
+{% extends "next_train/base.html" %}
+
+{% block content %}
+
+<h2>Station Preferences</h2>
+
+<form action="{% url 'next_train:preferences' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>save changes</button>
+</form>
+
+{% endblock content %}

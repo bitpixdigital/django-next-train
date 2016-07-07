@@ -17,7 +17,7 @@ easier and faster to calculate the timing of a connecting train.
 
 To see a live version of Next Train, see the link below:
 
-http://nexttrain.bitpixdigital.net/
+http://www.nexttrain.us/
 
 ## Roadmap ##
 

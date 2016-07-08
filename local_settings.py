@@ -1,6 +1,0 @@
-EMAIL_HOST_USER = 'info@bitpixdigital.com'
-EMAIL_HOST_PASSWORD = 'EySe9XmpNMTUf85BX5UR'
-DEFAULT_FROM_EMAIL = 'info@bitpixdigital.com'
-SERVER_EMAIL = 'info@bitpixdigital.com'
-GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-28836720-4'
-GOOGLE_ANALYTICS_DOMAIN = 'www.nexttrain.us'

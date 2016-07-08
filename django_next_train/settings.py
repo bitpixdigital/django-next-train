@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from local_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,13 +31,19 @@ DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'young-lake-29812.herokuapp.com', 'www.nexttrain.us']
 
 # Email Settings
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_SUBJECT_PREFIX = 'Next Train'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'os.environ.get('DEFAULT_FROM_EMAIL')'
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL')
 
-# Secure email settings within included local_settings
+# Google Analytics
+GOOGLE_ANALYTICS_PROPERTY_ID = os.environ.get('EMAIL_HOST_USER')
+GOOGLE_ANALYTICS_DOMAIN = os.environ.get('EMAIL_HOST_USER')
 
 
 # Application definition

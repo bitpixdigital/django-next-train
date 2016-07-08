@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'young-lake-29812.herokuapp.com', 'nexttrain.bitpixdigital.net']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'young-lake-29812.herokuapp.com', 'www.nexttrain.us']
 
 # Email Settings
 EMAIL_HOST = 'smtp.gmail.com'

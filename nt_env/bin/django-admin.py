@@ -1,4 +1,4 @@
-#!/Users/angelhernandez/Dropbox/Dev/djangoNextTrain/nt_env/bin/python3
+#!/Users/angelhernandez/Dropbox/Dev/django-next-train/nt_env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

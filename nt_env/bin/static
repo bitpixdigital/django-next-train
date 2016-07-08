@@ -1,4 +1,4 @@
-#!/Users/angelhernandez/Dropbox/Dev/djangoNextTrain/nt_env/bin/python3
+#!/Users/angelhernandez/Dropbox/Dev/django-next-train/nt_env/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'static3==0.7.0','console_scripts','static'
 __requires__ = 'static3==0.7.0'
 import sys

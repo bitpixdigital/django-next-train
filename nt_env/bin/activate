@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelavent variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/angelhernandez/Dropbox/Dev/djangoNextTrain/nt_env"
+VIRTUAL_ENV="/Users/angelhernandez/Dropbox/Dev/django-next-train/nt_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

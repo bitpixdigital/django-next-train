@@ -8,7 +8,7 @@
 </p>
 {% block content %}
 
-<form method="post" action="{% url 'users:register' %}">
+<form method="post" action="https://{{ request.get_host }}{% url 'users:register' %}">
 {% csrf_token %}
 {% bootstrap_form form %}
 

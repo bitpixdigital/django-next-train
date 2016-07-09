@@ -22,8 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # set your key as an environmental variable.
 # Before deploying to Heroku us the command
-# "heroku config:set DJANGO_SECRET_KEY"
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+# "heroku config:set SECRET_KEY"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

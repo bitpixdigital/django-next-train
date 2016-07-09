@@ -31,12 +31,12 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                      <li><a href="accounts/password_change">Hello {{ user.username }}</a></li>
-                      <li><a href="{% url 'next_train:preferences' %}">preferences</a></li>
-                      <li><a href="{% url 'users:logout' %}">logout</a></li>
+                      <li><a href="https://{{ request.get_host }}/accounts/password_change">Hello {{ user.username }}</a></li>
+                      <li><a href="https://{{ request.get_host }}{% url 'next_train:preferences' %}">preferences</a></li>
+                      <li><a href="https://{{ request.get_host }}{% url 'users:logout' %}">logout</a></li>
                     {% else %}
-                      <li><a href="{% url 'users:register' %}">register</a></li>
-                      <li><a href="{% url 'users:login' %}">login</a></li>
+                      <li><a href="https://{{ request.get_host }}{% url 'users:register' %}">register</a></li>
+                      <li><a href="https://{{ request.get_host }}{% url 'users:login' %}">login</a></li>
                     {% endif %}
                 </ul>
 

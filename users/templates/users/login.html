@@ -21,7 +21,7 @@
 <input type="hidden" name="next" value="{% url 'next_train:index' %}" />
 </form>
 <p>
-    <small><a href="/accounts/password_reset/">Forgot your password?</a></small>
+    <small><a href="https://{{ request.get_host }}/accounts/password_reset/">Forgot your password?</a></small>
 </p>
 
 {% endblock content %}

@@ -8,10 +8,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load staticfiles %}
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <title>Next Train</title>
         {% bootstrap_css %}
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% bootstrap_javascript %}
     </head>
 
@@ -25,7 +25,7 @@
                     aria-controls="navbar">
                 </button>
                 <a class="navbar-brand" href="{% url 'next_train:index' %}">
-                    <img src="https://www.dropbox.com/s/bgoaoqap56kdjz5/nexttrain-logo-40px.png?dl=1" alt="Next Train Logo"/></a>
+                    <img src="{% static 'images/nexttrain-logo-60px.png' %}" alt="Next Train Logo"/></a>
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">

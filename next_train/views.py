@@ -11,6 +11,23 @@ from .models import StationPrefs
 # import forms
 from .forms import NextTrainForm, StationPrefForm, ModelForm
 
+def is_weekday(weekday):
+    if weekday >= 0 and weekday <= 4:
+        return 5
+    else:
+        return 7
+
+def is_open():
+    now = datetime.datetime.now()
+    hour = now.hour
+    now = datetime.datetime.now()
+    weekday = now.weekday()
+    if hour >= 12 and hour <= is_open(weekday):
+        # CLOSED
+        return False
+    else:
+        return True
+
 def checkPrefs(request):
     if request.user.is_authenticated():
         s_pref = StationPrefs.objects.filter(owner=request.user)
@@ -42,7 +59,15 @@ def index(request):
         return render(request, 'next_train/index.html', context)
     else:
         nextTrain = []
-        message = ""
+        message = """Next Train DC is designed to be a lightweight, and thus
+                  the fastest, tool to help you catch the next arriving train.
+                  Simply choose one or more of the stations below. If you
+                  need to transfer to another line on your trip, make sure
+                  you select the transfer station as well
+                  to optimize your timing! Registration is optional,
+                  but it's designed to save you time by allowing you to save
+                  your favorite stations so that they're pre-selected the
+                  next time you log in."""
         # POST data submitted; process data.
         form = NextTrainForm(request.POST)
         if form.is_valid():
@@ -79,10 +104,10 @@ def index(request):
                 #metro = json.loads(data)
 
                 for metro in data['Trains']:
-                    pLine = metro['LocationName'] + ":" + "(" + metro['DestinationName'] + ")" + " next " + metro['Line'] + " line train in  " + metro['Min'] + " minutes"
+                    pLine = (metro['Line'] + metro['LocationName'] + ":" + "(" + metro['DestinationName'] + ")" + " next " + metro['Line'] + " line train in  " + metro['Min'] + " minutes")
                     nextTrain.append(pLine)
 
-                if not nextTrain and not is_open():
+                if not is_open():
                     pLine = "Sorry, the DC Metro system is currently CLOSED."
                     nextTrain.append(pLine)
 

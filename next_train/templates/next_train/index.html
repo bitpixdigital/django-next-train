@@ -8,23 +8,24 @@
 {% endblock header %}
 
 {% block content  %}
- <small> {{ message }} </small>
-<form action="{% url 'next_train:index' %}" method="post">
+ <div id="station_form">
+  <form action="{% url 'next_train:index' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" />
-</form>
-<ul>
+  </form>
+ </div>
+ <div id="welcome">
+     {{ message }}
+ </div>
+ <div id="nt_box">
     {% for train in nextTrain %}
-    <li>
-        <h3>
+        <p id="next_train">
         {{ train }}
-        </h3>
-    </li>
+        </p>
     {% empty %}
-        ( Please select a station or multiple stations above. )
+        ( Ctrl/Cmd+click to select multiple stations )
     {% endfor %}
-</ul>
-
+</div>
 
 {% endblock content  %}

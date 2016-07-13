@@ -6,3 +6,39 @@
 .navbar-right {
     margin-top: +15px;
 }
+
+.page-header {
+    margin: 0 0 0 0;
+}
+
+#welcome {
+    position: relative;
+    width: 400px;
+    padding: 10px;
+	border: none;
+    background-color: #f8f8f8;
+	margin: 10px;
+    top: 5px;
+    left: 450px;
+}
+
+#station_form {
+    position: absolute;
+    top: 225px;
+    left: 50px;
+}
+
+#next_train {
+    border: 1px dotted black;
+    list-style-type: none;
+    font-size: 1.25em;
+    width: 800px;
+    padding: 5px;
+
+}
+
+#nt_box {
+    position: relative;
+    top: 25px;
+    left: 85px;
+}

@@ -22,7 +22,7 @@ def is_closed():
     hour = now.hour
     weekday = now.weekday()
 
-    if hour >= 0 and hour < is_weekday(weekday):
+    if (hour >= 0) & (hour < is_weekday(weekday)):
         # CLOSED
         return True
     else:
@@ -103,7 +103,7 @@ def index(request):
                 data = json.loads(response.read().decode('utf-8'))
                 #metro = json.loads(data)
 
-                if is_closed() == True:
+                if is_closed():
                     pLine = "Sorry, the DC Metro system is currently CLOSED."
                     nextTrain.append(pLine)
                 else:

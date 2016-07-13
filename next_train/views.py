@@ -17,16 +17,16 @@ def is_weekday(weekday):
     else:
         return 7
 
-def is_open():
+def is_closed():
     now = datetime.datetime.now()
     hour = now.hour
-    now = datetime.datetime.now()
     weekday = now.weekday()
-    if hour >= 12 and hour <= is_open(weekday):
+
+    if hour >= 0 and hour < is_weekday(weekday):
         # CLOSED
-        return False
-    else:
         return True
+    else:
+        return False
 
 def checkPrefs(request):
     if request.user.is_authenticated():
@@ -103,15 +103,14 @@ def index(request):
                 data = json.loads(response.read().decode('utf-8'))
                 #metro = json.loads(data)
 
-                for metro in data['Trains']:
-                    pLine = (metro['Line'] + metro['LocationName'] + ":" + "(" + metro['DestinationName'] + ")" + " next " + metro['Line'] + " line train in  " + metro['Min'] + " minutes")
-                    nextTrain.append(pLine)
-
-                if not is_open():
+                if is_closed() == True:
                     pLine = "Sorry, the DC Metro system is currently CLOSED."
                     nextTrain.append(pLine)
+                else:
+                    for metro in data['Trains']:
+                        pLine = (metro['Line'] + metro['LocationName'] + ":" + "(" + metro['DestinationName'] + ")" + " next " + metro['Line'] + " line train in  " + metro['Min'] + " minutes")
+                        nextTrain.append(pLine)
 
-                #print(data)
                 conn.close()
                 context = {'nextTrain': nextTrain, 'form': form, 'message': message}
                 return render(request, 'next_train/index.html', context)

@@ -108,7 +108,7 @@ def index(request):
                     nextTrain.append(pLine)
                 else:
                     for metro in data['Trains']:
-                        pLine = (metro['Line'] + metro['LocationName'] + ":" + "(" + metro['DestinationName'] + ")" + " next " + metro['Line'] + " line train in  " + metro['Min'] + " minutes")
+                        pLine = (metro['LocationName'] + ":" + "(" + metro['DestinationName'] + ")" + " next " + metro['Line'] + " line train in  " + metro['Min'] + " minutes")
                         nextTrain.append(pLine)
 
                 conn.close()
